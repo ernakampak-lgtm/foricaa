@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carissa Zahra Wardhani | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                            950: '#172554',
+                        },
+                        cyber: {
+                            dark: '#030712',
+                            cardDark: 'rgba(15, 23, 42, 0.65)',
+                            cardLight: 'rgba(255, 255, 255, 0.85)',
+                            accent: '#38bdf8',
+                            neon: '#60a5fa'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s infinite alternate',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%': { boxShadow: '0 0 15px rgba(59, 130, 246, 0.3)' },
+                            '100%': { boxShadow: '0 0 35px rgba(59, 130, 246, 0.8)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-950 text-slate-100 font-sans transition-colors duration-300 antialiased overflow-x-hidden">
+
+    <!-- Cyber Welcome Intro Preloader Screen -->
+    <div id="welcome-loader" class="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#060412] text-slate-100 overflow-hidden select-none transition-opacity duration-700">
+        <!-- Ambient Glowing Background Spheres -->
+        <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-purple-600/20 blur-[120px] pointer-events-none animate-pulse"></div>
+        <div class="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-cyan-600/20 blur-[120px] pointer-events-none animate-pulse"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-blue-600/10 blur-[140px] pointer-events-none"></div>
+
+        <!-- Subtle Background Cyber Grid Line Pattern -->
+        <div class="absolute inset-0 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:32px_32px] opacity-10 pointer-events-none"></div>
+
+        <!-- Main Content Box -->
+        <div class="relative z-10 flex flex-col items-center text-center px-4 max-w-3xl mx-auto space-y-8">
+            <!-- 4 Glowing Icon Badges (Code, User, GitHub SVG, Shield) -->
+            <div id="loader-icons" class="flex items-center justify-center gap-4 sm:gap-6">
+                <div class="loader-badge w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-purple-950/60 border border-purple-500/40 text-purple-400 flex items-center justify-center shadow-lg shadow-purple-950/60 backdrop-blur-md transition-all hover:scale-110 hover:border-purple-400">
+                    <svg class="w-6 h-6 sm:w-7 sm:h-7 stroke-current" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg>
+                </div>
+                <div class="loader-badge w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-cyan-950/60 border border-cyan-500/40 text-cyan-400 flex items-center justify-center shadow-lg shadow-cyan-950/60 backdrop-blur-md transition-all hover:scale-110 hover:border-cyan-400">
+                    <svg class="w-6 h-6 sm:w-7 sm:h-7 stroke-current" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <div class="loader-badge w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-blue-950/60 border border-blue-500/40 text-blue-400 flex items-center justify-center shadow-lg shadow-blue-950/60 backdrop-blur-md transition-all hover:scale-110 hover:border-blue-400">
+                    <svg class="w-6 h-6 sm:w-7 sm:h-7 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </div>
+                <div class="loader-badge w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shadow-lg shadow-emerald-950/60 backdrop-blur-md transition-all hover:scale-110 hover:border-emerald-400">
+                    <svg class="w-6 h-6 sm:w-7 sm:h-7 stroke-current" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                </div>
+            </div>
+
+            <!-- Welcome Text Header -->
+            <div id="loader-text-wrap" class="space-y-3">
+                <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white drop-shadow-md">
+                    Welcome To My
+                </h1>
+                <div class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight bg-gradient-to-r from-blue-400 via-cyan-400 to-sky-400 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(56,189,248,0.6)]">
+                    Portfolio Website
+                </div>
+            </div>
+
+            <!-- Cyber Progress Bar & Status Counter -->
+            <div id="loader-progress-wrap" class="w-72 sm:w-96 space-y-3 pt-4">
+                <div class="flex items-center justify-between text-xs font-mono text-slate-400 px-1">
+                    <span id="loader-status-text" class="text-cyan-400 font-semibold tracking-wider">INITIALIZING SYSTEM...</span>
+                    <span id="loader-percent" class="text-cyan-300 font-extrabold text-sm drop-shadow-[0_0_10px_rgba(56,189,248,0.8)]">0%</span>
+                </div>
+                
+                <!-- Sleek Track with Glowing Head Dot -->
+                <div class="relative w-full h-2 bg-slate-950/90 rounded-full border border-purple-900/40 p-0.5 shadow-inner overflow-visible">
+                    <div id="loader-progress-bar" class="relative h-full bg-gradient-to-r from-purple-600 via-cyan-400 to-blue-400 rounded-full w-0 transition-all duration-75 ease-out shadow-[0_0_14px_rgba(56,189,248,0.9)] flex items-center justify-end">
+                        <!-- Glowing Circular Head Dot on Leading Edge -->
+                        <div class="absolute -right-2.5 w-4 h-4 rounded-full bg-cyan-300 border-2 border-purple-900 shadow-[0_0_15px_#38bdf8] animate-pulse"></div>
+                    </div>
+                </div>
+                
+                <p class="text-[10px] font-mono text-slate-500 pt-1.5 text-center hover:text-slate-400 transition-colors cursor-pointer" id="loader-skip-text">Klik di mana saja untuk lewati</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Custom Glowing Cursor -->
+    <div class="custom-cursor hidden md:block" id="cursor-follower"></div>
+    <div class="custom-cursor-dot hidden md:block" id="cursor-dot"></div>
+
+    <!-- 3D Canvas Background & Interactive Motion Canvas -->
+    <div id="canvas-container" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-80"></div>
+    <div id="motion-canvas-container" class="fixed top-0 left-0 w-full h-full -z-5 pointer-events-none"></div>
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-gray-950/70 border-b border-blue-900/30 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center text-white font-mono font-bold text-xl shadow-lg shadow-blue-500/30 group-hover:scale-105 transition-transform">
+                    MD
+                </div>
+                <div>
+                    <span class="font-bold text-lg tracking-tight block text-slate-100 group-hover:text-blue-400 transition-colors">Carissa Zahra</span>
+                    <span class="text-xs font-mono text-blue-400 block -mt-1">Portfolio v1.0</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-300">
+                <a href="#hero" data-i18n="navHome" class="hover:text-blue-400 transition-colors">Home</a>
+                <a href="#about" data-i18n="navAbout" class="hover:text-blue-400 transition-colors">About</a>
+                <a href="#skills" data-i18n="navSkills" class="hover:text-blue-400 transition-colors">Skills</a>
+                <a href="#projects" data-i18n="navShowcase" class="hover:text-blue-400 transition-colors">Showcase</a>
+                <a href="#achievements" data-i18n="navAchievements" class="hover:text-blue-400 transition-colors">Achievements</a>
+                <a href="#music-player-section" data-i18n="navMusic" class="hover:text-blue-400 transition-colors">Music</a>
+                <a href="#contact" data-i18n="navContact" class="hover:text-blue-400 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Actions: Language Switcher, Theme Toggle & Social Quick Links -->
+            <div class="flex items-center gap-3">
+                <!-- Music Deck Quick Nav Button (Sebelah kiri Contact) -->
+                <a href="#music-player-section" id="nav-music-btn" class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-900/80 border border-cyan-800/40 text-cyan-400 hover:bg-cyan-900/30 font-mono text-xs font-bold transition-all hover:scale-105 shadow-sm group" title="Cyber Music Deck">
+                    <i data-lucide="music" class="w-4 h-4 text-cyan-400 group-hover:rotate-12 transition-transform"></i>
+                    <span class="hidden xs:inline">Music</span>
+                </a>
+
+                <!-- Language Switcher Button -->
+                <button id="lang-toggle" class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-900/80 border border-blue-800/40 text-blue-400 hover:bg-blue-900/30 font-mono text-xs font-bold transition-all hover:scale-105 shadow-sm" title="Ubah Bahasa / Switch Language">
+                    <i data-lucide="globe" class="w-4 h-4 text-cyan-400"></i>
+                    <span id="lang-label">ID</span>
+                </button>
+
+                <button id="theme-toggle" class="p-2.5 rounded-xl bg-slate-900/80 border border-blue-800/40 text-blue-400 hover:bg-blue-900/30 transition-all hover:scale-105" title="Toggle Light/Dark Theme">
+                    <i data-lucide="sun" id="theme-icon-sun" class="w-5 h-5 hidden"></i>
+                    <i data-lucide="moon" id="theme-icon-moon" class="w-5 h-5"></i>
+                </button>
+
+                <a href="#contact" data-i18n="contactMe" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-cyan-500 text-white font-semibold text-sm shadow-lg shadow-blue-600/30 hover:shadow-blue-500/50 transition-all hover:-translate-y-0.5">
+                    <span>Contact Me</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-300 hover:text-white">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-950/95 border-b border-blue-900/40 px-6 py-4 flex flex-col gap-4 font-medium">
+            <a href="#hero" data-i18n="navHome" class="hover:text-blue-400 py-1">Home</a>
+            <a href="#about" data-i18n="navAbout" class="hover:text-blue-400 py-1">About</a>
+            <a href="#skills" data-i18n="navSkills" class="hover:text-blue-400 py-1">Skills</a>
+            <a href="#projects" data-i18n="navShowcase" class="hover:text-blue-400 py-1">Showcase</a>
+            <a href="#achievements" data-i18n="navAchievements" class="hover:text-blue-400 py-1">Achievements</a>
+            <a href="#contact" data-i18n="navContact" class="hover:text-blue-400 py-1">Contact</a>
+        </div>
+    </header>
+
+    <main class="relative pt-20">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-[calc(100vh-5rem)] flex items-center justify-center relative px-4 sm:px-6 lg:px-8 py-16">
+            <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-8">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-950/60 border border-blue-500/30 text-blue-300 font-mono text-xs sm:text-sm shadow-inner backdrop-blur-md">
+                        <span class="w-2.5 h-2.5 rounded-full bg-blue-400 animate-ping"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-blue-400 -ml-5"></span>
+                        <span data-i18n="heroBadge">Available for Security Research & Technical Projects</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight">
+                            <span data-i18n="heroGreeting">Hi, I'm</span> <br>
+                            <span class="text-gradient">Carissa Zahra</span>
+                            <span class="text-gradient-cyan block mt-1">Wardhani</span>
+                        </h1>
+                        <div class="text-lg sm:text-xl font-mono text-blue-400 h-8 flex items-center">
+                            <span id="typewriter"></span><span class="animate-pulse">|</span>
+                        </div>
+                    </div>
+
+                    <p data-i18n="heroDesc" class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+                        Passionate Cybersecurity Researcher, Full-Stack & Embedded Systems Developer, Network Enthusiast, and Financial Market Analyst. Combining deep technical security analysis with hardware prototyping and market dynamics.
+                    </p>
+
+                    <!-- Social Icons Bar -->
+                    <div class="flex flex-wrap items-center gap-3 pt-2">
+                        <a href="https://github.com/XyuuAnalyst" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-slate-900/80 border border-blue-900/40 text-slate-300 hover:text-blue-400 hover:border-cyan-400/80 hover:bg-blue-950/80 transition-all duration-300 hover:-translate-y-2 hover:scale-110 hover:shadow-[0_10px_25px_rgba(56,189,248,0.4)] shadow-md group" title="GitHub">
+                            <svg class="w-5 h-5 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-2.163c-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/carissa-zahra-wardhani-4b9198441" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-slate-900/80 border border-blue-900/40 text-slate-300 hover:text-blue-400 hover:border-cyan-400/80 hover:bg-blue-950/80 transition-all duration-300 hover:-translate-y-2 hover:scale-110 hover:shadow-[0_10px_25px_rgba(56,189,248,0.4)] shadow-md group" title="LinkedIn">
+                            <svg class="w-5 h-5 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/0xgalyxz?igsi=ZzQ0MnVvYzMyeGZ4" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-slate-900/80 border border-blue-900/40 text-slate-300 hover:text-blue-400 hover:border-cyan-400/80 hover:bg-blue-950/80 transition-all duration-300 hover:-translate-y-2 hover:scale-110 hover:shadow-[0_10px_25px_rgba(56,189,248,0.4)] shadow-md group" title="Instagram">
+                            <svg class="w-5 h-5 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@marriedwithmieayamm?_r=1&_t=ZS-9AINLlkLFmK" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-slate-900/80 border border-blue-900/40 text-slate-300 hover:text-blue-400 hover:border-cyan-400/80 hover:bg-blue-950/80 transition-all duration-300 hover:-translate-y-2 hover:scale-110 hover:shadow-[0_10px_25px_rgba(56,189,248,0.4)] shadow-md group" title="TikTok">
+                            <svg class="w-5 h-5 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.83.57-1.33 1.54-1.34 2.55-.01.8.31 1.59.88 2.15.65.65 1.6.98 2.51.86.99-.11 1.88-.74 2.33-1.63.3-.59.44-1.26.44-1.93.02-4.57.01-9.15.01-13.72z"/></svg>
+                        </a>
+                        <a href="https://t.me/Xyuuanalyst" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-slate-900/80 border border-blue-900/40 text-slate-300 hover:text-blue-400 hover:border-cyan-400/80 hover:bg-blue-950/80 transition-all duration-300 hover:-translate-y-2 hover:scale-110 hover:shadow-[0_10px_25px_rgba(56,189,248,0.4)] shadow-md group" title="Telegram">
+                            <svg class="w-5 h-5 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.562 8.161c-.18.717-.962 4.084-1.362 5.437-.168.573-.418.765-.658.784-.522.042-.917-.35-1.423-.68-.792-.519-1.24-.84-2.008-1.346-.888-.585-.312-.907.194-1.431.132-.137 2.428-2.225 2.472-2.413.006-.024.011-.115-.043-.163-.053-.047-.132-.031-.189-.018-.081.018-1.378.876-3.89 2.571-.368.252-.701.375-.999.368-.328-.007-.959-.185-1.428-.338-.576-.188-1.033-.288-.993-.609.021-.167.252-.338.692-.513 2.72-1.185 4.536-1.968 5.449-2.348 2.593-1.079 3.131-1.267 3.483-1.273.077 0 .25.018.362.11.095.077.121.182.133.256.012.074.027.243.016.375z"/></svg>
+                        </a>
+                        <a href="https://x.com/Xyuu78" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-slate-900/80 border border-blue-900/40 text-slate-300 hover:text-blue-400 hover:border-cyan-400/80 hover:bg-blue-950/80 transition-all duration-300 hover:-translate-y-2 hover:scale-110 hover:shadow-[0_10px_25px_rgba(56,189,248,0.4)] shadow-md group" title="X (Twitter)">
+                            <svg class="w-5 h-5 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="mailto:dCarissa Zahra Wardhani@gmail.com" class="p-3 rounded-xl bg-slate-900/80 border border-blue-900/40 text-slate-300 hover:text-blue-400 hover:border-cyan-400/80 hover:bg-blue-950/80 transition-all duration-300 hover:-translate-y-2 hover:scale-110 hover:shadow-[0_10px_25px_rgba(56,189,248,0.4)] shadow-md group" title="Email">
+                            <i data-lucide="mail" class="w-5 h-5 transition-transform duration-300 group-hover:scale-110"></i>
+                        </a>
+                    </div>
+
+                    <!-- Call To Actions -->
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#projects" class="px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold shadow-lg shadow-blue-600/40 transition-all hover:scale-105 flex items-center gap-3">
+                            <i data-lucide="layout-grid" class="w-5 h-5"></i>
+                            <span data-i18n="heroBtnPortfolio">Explore Portfolio</span>
+                        </a>
+                        <a href="#skills" class="px-7 py-3.5 rounded-xl bg-slate-900/90 border border-blue-800/60 hover:border-blue-400 text-slate-200 hover:text-white font-semibold transition-all hover:scale-105 flex items-center gap-3 backdrop-blur-md">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-blue-400"></i>
+                            <span data-i18n="heroBtnSkills">Technical Expertise</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3D Interactive Card / Terminal Widget -->
+                <div class="lg:col-span-5 relative">
+                    <div class="w-full h-full glass-card-dark rounded-3xl p-6 shadow-2xl border border-blue-500/20 relative overflow-hidden transition-all duration-300 hover:border-blue-400/50 group">
+                        <!-- Terminal Header -->
+                        <div class="flex items-center justify-between border-b border-blue-900/40 pb-4 mb-5 gap-2">
+                            <div class="flex items-center gap-2 shrink-0">
+                                <button id="btn-terminal-red" title="Tampilkan System Profile (Merah)" class="w-3.5 h-3.5 rounded-full bg-red-500 hover:bg-red-400 transition-colors shadow-sm cursor-pointer flex items-center justify-center text-[8px] text-red-950 font-bold group/btn">
+                                    <span class="opacity-0 group-hover/btn:opacity-100">✕</span>
+                                </button>
+                                <button id="btn-terminal-yellow" title="Tampilkan Foto / Avatar (Kuning)" class="w-3.5 h-3.5 rounded-full bg-yellow-500 hover:bg-yellow-400 transition-colors shadow-sm cursor-pointer flex items-center justify-center text-[9px] text-yellow-950 font-bold group/btn animate-pulse">
+                                    <span class="opacity-0 group-hover/btn:opacity-100">−</span>
+                                </button>
+                                <button id="btn-terminal-green" title="Buka Interactive Terminal (Hijau)" class="w-3.5 h-3.5 rounded-full bg-green-500 hover:bg-green-400 transition-colors shadow-sm cursor-pointer flex items-center justify-center text-[8px] text-green-950 font-bold group/btn animate-pulse relative z-20">
+                                    <span class="opacity-0 group-hover/btn:opacity-100">⤢</span>
+                                </button>
+                            </div>
+                            <div class="truncate text-right min-w-0 max-w-[70%]">
+                                <span class="font-mono text-xs text-blue-400/90 truncate block" id="terminal-tab-title">Ica-node@security-core:~</span>
+                            </div>
+                        </div>
+
+                        <!-- Terminal Body Content -->
+                        <div id="terminal-body-container" class="font-mono text-xs sm:text-sm space-y-3 text-slate-300">
+                            <p class="text-blue-400">$ systemctl status profile-core</p>
+                            <p class="text-emerald-400">● Profile Active: Carissa Zahra Wardhani</p>
+                            <p class="text-slate-400">-------------------------------------------</p>
+                            <div class="space-y-1.5 pl-2 border-l-2 border-blue-500/40">
+                                <p><span class="text-cyan-400">Email:</span>carissazahrawardhani@gmail.com</p>
+                                <p><span class="text-cyan-400" data-i18n="terminalFocusLabel">Focus:</span> <span data-i18n="terminalFocusVal">Offensive Sec & Hardware</span></p>
+                                <p><span class="text-cyan-400" data-i18n="terminalOSLabel">OS Spec:</span> Kali Linux / Ubuntu / WSL</p>
+                                <p><span class="text-cyan-400" data-i18n="terminalMicroLabel">MC Micro:</span> ESP32 & Arduino Dev</p>
+                                <p><span class="text-cyan-400" data-i18n="terminalFinLabel">Financial:</span> <span data-i18n="terminalFinVal">XAUUSD & Crypto Analysis</span></p>
+                            </div>
+
+                            <p class="text-blue-400 pt-2">$ run-security-recon --verbose</p>
+                            <div class="bg-black/40 rounded-xl p-3 border border-blue-900/30 text-xs text-slate-400 font-mono space-y-1">
+                                <p class="text-blue-300" data-i18n="terminalSubdomain">[+] Subdomain Enumeration: Completed</p>
+                                <p class="text-cyan-300" data-i18n="terminalAPI">[+] API Vulnerability Assessment: Ready</p>
+                                <p class="text-emerald-300" data-i18n="terminalRF">[+] RF Hardware Link: 433MHz Connected</p>
+                                <p class="text-purple-300" data-i18n="terminalCrypto">[+] Crypto Market Sentiment: Bullish</p>
+                            </div>
+                        </div>
+
+                        <!-- Interactive 3D Canvas Sub-window -->
+                        <div id="hero-3d-object" class="w-full h-48 mt-5 rounded-2xl overflow-hidden bg-slate-950/80 border border-blue-500/30 relative shadow-inner group/canvas">
+                            <div class="absolute top-2.5 left-3.5 z-10 flex items-center gap-2 px-2.5 py-1 rounded-md bg-slate-900/80 border border-blue-800/40 backdrop-blur-md">
+                                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                                <span class="text-[10px] font-mono text-cyan-300 font-semibold uppercase tracking-wider" data-i18n="terminal3dTag">3D Cyber Security Sphere • Interactive</span>
+                            </div>
+                            <div class="absolute bottom-2.5 right-3 z-10 text-[9px] font-mono text-slate-400 bg-black/60 px-2 py-0.5 rounded border border-blue-900/30" data-i18n="terminal3dDrag">
+                                Drag mouse to rotate 3D node
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-7xl mx-auto space-y-16">
+                <div class="text-center max-w-3xl mx-auto space-y-4">
+                    <h2 class="text-xs font-mono font-bold tracking-widest text-blue-400 uppercase" data-i18n="aboutTitle">Profile & Philosophy</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold tracking-tight" data-i18n="aboutHeadline">Carissa Zahra Wardhani</p>
+                    <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="glass-card-dark rounded-2xl p-8 space-y-4 hover:border-blue-500/50 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
+                            <i data-lucide="shield" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-100" data-i18n="aboutCyberTitle">Cybersecurity Focus</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed" data-i18n="aboutCyberDesc">
+                            Specialize in web vulnerability research, recon, API security, and bug hunting. Utilizing industry-standard CLI toolkits like Nmap, ffuf, Katana, and Subfinder to discover security misconfigurations and information disclosures.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="glass-card-dark rounded-2xl p-8 space-y-4 hover:border-blue-500/50 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
+                            <i data-lucide="cpu" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-100" data-i18n="aboutHardwareTitle">Hardware & Embedded</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed" data-i18n="aboutHardwareDesc">
+                            Bridging hardware with software through ESP32 and Arduino microcontrollers. Experienced with PCB design in Altium, RF module communication, display integration, and battery charging circuit design.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="glass-card-dark rounded-2xl p-8 space-y-4 hover:border-blue-500/50 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
+                            <i data-lucide="trending-up" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-100" data-i18n="aboutFinanceTitle">Financial & Crypto Analysis</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed" data-i18n="aboutFinanceDesc">
+                            Applying quantitative technical analysis, macroeconomic data, price action, and market sentiment monitoring to Crypto markets and XAUUSD (Gold), backed by strict risk management frameworks.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section id="skills" class="py-24 px-4 sm:px-6 lg:px-8 bg-blue-950/10 border-y border-blue-900/20 relative">
+            <div class="max-w-7xl mx-auto space-y-16">
+                <div class="text-center max-w-3xl mx-auto space-y-4">
+                    <h2 class="text-xs font-mono font-bold tracking-widest text-blue-400 uppercase" data-i18n="skillsTitle">Capabilities & Toolkit</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold tracking-tight" data-i18n="skillsHeadline">Comprehensive Skill Set</p>
+                    <p class="text-slate-400 text-sm sm:text-base" data-i18n="skillsSubheadline">Categorized breakdown of technical competencies, specialized tools, and domain knowledge.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Category 1: Cybersecurity -->
+                    <div class="glass-card-dark rounded-2xl p-6 space-y-6 flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="p-3 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30">
+                                    <i data-lucide="lock" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-slate-100" data-i18n="skillCyberTitle">Cybersecurity</h3>
+                                    <span class="text-xs font-mono text-blue-400" data-i18n="skillCyberSubtitle">Offensive & Vulnerability</span>
+                                </div>
+                            </div>
+                            <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span><span data-i18n="skillCyberItem1">Web Reconnaissance & Subdomain Enumeration</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span><span data-i18n="skillCyberItem2">Vulnerability Assessment & Bug Hunting</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span><span data-i18n="skillCyberItem3">OSINT & Information Disclosure Analysis</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span><span data-i18n="skillCyberItem4">API Security Testing & Misconfig Analysis</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span><span data-i18n="skillCyberItem5">CORS & Authentication Flow Assessment</span></li>
+                            </ul>
+                        </div>
+                        <div class="pt-4 border-t border-blue-900/40">
+                            <span class="text-xs font-mono text-slate-400 block mb-2" data-i18n="toolsLabel">Tools Used:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-blue-300 font-mono text-xs">Nmap</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-blue-300 font-mono text-xs">Subfinder</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-blue-300 font-mono text-xs">httpx</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-blue-300 font-mono text-xs">ffuf</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-blue-300 font-mono text-xs">Katana</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-blue-300 font-mono text-xs">WhatWeb</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-blue-300 font-mono text-xs">Waybackurls</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-blue-300 font-mono text-xs">curl</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category 2: Embedded & Hardware -->
+                    <div class="glass-card-dark rounded-2xl p-6 space-y-6 flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="p-3 rounded-xl bg-cyan-600/20 text-cyan-400 border border-cyan-500/30">
+                                    <i data-lucide="microchip" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-slate-100" data-i18n="skillEmbeddedTitle">Embedded & Hardware</h3>
+                                    <span class="text-xs font-mono text-cyan-400" data-i18n="skillEmbeddedSubtitle">Microcontrollers & PCB</span>
+                                </div>
+                            </div>
+                            <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span><span data-i18n="skillEmbeddedItem1">ESP32 Development & WiFi/BT Stacks</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span><span data-i18n="skillEmbeddedItem2">Arduino Ecosystem & Prototyping</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span><span data-i18n="skillEmbeddedItem3">PCB Layout & Schematic Design</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span><span data-i18n="skillEmbeddedItem4">UART / Serial Protocol Communication</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span><span data-i18n="skillEmbeddedItem5">RF Module Integration & Power Circuits</span></li>
+                            </ul>
+                        </div>
+                        <div class="pt-4 border-t border-blue-900/40">
+                            <span class="text-xs font-mono text-slate-400 block mb-2" data-i18n="toolsLabel">Tools Used:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-cyan-300 font-mono text-xs">Arduino IDE</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-cyan-300 font-mono text-xs">Altium Designer</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-cyan-300 font-mono text-xs">ESP-IDF</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-cyan-300 font-mono text-xs">Serial Monitors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category 3: Financial & Crypto Market -->
+                    <div class="glass-card-dark rounded-2xl p-6 space-y-6 flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="p-3 rounded-xl bg-emerald-600/20 text-emerald-400 border border-emerald-500/30">
+                                    <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-slate-100" data-i18n="skillFinTitle">Financial Analysis</h3>
+                                    <span class="text-xs font-mono text-emerald-400" data-i18n="skillFinSubtitle">Crypto & XAUUSD Market</span>
+                                </div>
+                            </div>
+                            <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span><span data-i18n="skillFinItem1">Cryptocurrency Market Technical Analysis</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span><span data-i18n="skillFinItem2">Price Action & Chart Pattern Recognition</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span><span data-i18n="skillFinItem3">Macroeconomic Data & Sentiment Analysis</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span><span data-i18n="skillFinItem4">Risk Management & Position Sizing</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span><span data-i18n="skillFinItem5">Gold (XAUUSD) Market Dynamics</span></li>
+                            </ul>
+                        </div>
+                        <div class="pt-4 border-t border-blue-900/40">
+                            <span class="text-xs font-mono text-slate-400 block mb-2" data-i18n="coreDomainsLabel">Core Domains:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-emerald-300 font-mono text-xs">Technical Analysis</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-emerald-300 font-mono text-xs">Price Action</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-emerald-300 font-mono text-xs">Risk Management</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category 4: Networking & TKJ -->
+                    <div class="glass-card-dark rounded-2xl p-6 space-y-6 flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="p-3 rounded-xl bg-purple-600/20 text-purple-400 border border-purple-500/30">
+                                    <i data-lucide="network" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-slate-100" data-i18n="skillNetTitle">Networking & TKJ</h3>
+                                    <span class="text-xs font-mono text-purple-400" data-i18n="skillNetSubtitle">Infrastructure & Protocols</span>
+                                </div>
+                            </div>
+                            <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span><span data-i18n="skillNetItem1">TCP/IP Protocols, DNS & HTTP/HTTPS</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span><span data-i18n="skillNetItem2">VLAN Segmentation & Network Config</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span><span data-i18n="skillNetItem3">Linux Server Administration & Deployments</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span><span data-i18n="skillNetItem4">Virtualization & Virtual Machine Setups</span></li>
+                            </ul>
+                        </div>
+                        <div class="pt-4 border-t border-blue-900/40">
+                            <span class="text-xs font-mono text-slate-400 block mb-2" data-i18n="envLabel">Environments:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-purple-300 font-mono text-xs">Kali Linux</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-purple-300 font-mono text-xs">Ubuntu Server</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-purple-300 font-mono text-xs">WSL</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-purple-300 font-mono text-xs">Windows</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category 5: Programming & Web Dev -->
+                    <div class="glass-card-dark rounded-2xl p-6 space-y-6 flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="p-3 rounded-xl bg-amber-600/20 text-amber-400 border border-amber-500/30">
+                                    <i data-lucide="code" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-slate-100" data-i18n="skillProgTitle">Programming & Web</h3>
+                                    <span class="text-xs font-mono text-amber-400" data-i18n="skillProgSubtitle">Development & Scripting</span>
+                                </div>
+                            </div>
+                            <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span><span data-i18n="skillProgItem1">Python Scripting & Automation Tools</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span><span data-i18n="skillProgItem2">Modern Web & Frontend Development</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span><span data-i18n="skillProgItem3">RESTful API Integration & Backend Basics</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span><span data-i18n="skillProgItem4">Linux Shell Scripting & Bash Automation</span></li>
+                            </ul>
+                        </div>
+                        <div class="pt-4 border-t border-blue-900/40">
+                            <span class="text-xs font-mono text-slate-400 block mb-2" data-i18n="langToolsLabel">Languages & Tools:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-amber-300 font-mono text-xs">Python</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-amber-300 font-mono text-xs">JavaScript</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-amber-300 font-mono text-xs">HTML5 / CSS3</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-amber-300 font-mono text-xs">Bash</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-amber-300 font-mono text-xs">Git / GitHub</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category 6: Technical Research & Methodology -->
+                    <div class="glass-card-dark rounded-2xl p-6 space-y-6 flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="p-3 rounded-xl bg-pink-600/20 text-pink-400 border border-pink-500/30">
+                                    <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-slate-100" data-i18n="skillResTitle">Research & Problem Solving</h3>
+                                    <span class="text-xs font-mono text-pink-400" data-i18n="skillResSubtitle">Technical Soft-Skills</span>
+                                </div>
+                            </div>
+                            <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span><span data-i18n="skillResItem1">Root Cause Analysis & System Debugging</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span><span data-i18n="skillResItem2">Vulnerability Analysis & Technical Reporting</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span><span data-i18n="skillResItem3">Comprehensive Technical Documentation</span></li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span><span data-i18n="skillResItem4">Independent Research & Fast Technology Adoption</span></li>
+                            </ul>
+                        </div>
+                        <div class="pt-4 border-t border-blue-900/40">
+                            <span class="text-xs font-mono text-slate-400 block mb-2" data-i18n="strengthsLabel">Strengths:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-pink-300 font-mono text-xs">Root Cause Analysis</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/40 text-pink-300 font-mono text-xs">Security Reporting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Showcase Section -->
+        <section id="projects" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-7xl mx-auto space-y-16">
+                <div class="text-center max-w-3xl mx-auto space-y-4">
+                    <h2 class="text-xs font-mono font-bold tracking-widest text-blue-400 uppercase" data-i18n="projectsTitle">Featured Highlights</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold tracking-tight" data-i18n="projectsHeadline">Project Showcase</p>
+                    <p class="text-slate-400 text-sm sm:text-base" data-i18n="projectsSubheadline">Real-world implementations combining embedded systems, security research, and custom applications.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Featured Project 1: ESP32 Hardware Unit -->
+                    <div class="glass-card-dark rounded-3xl p-8 space-y-6 hover:border-blue-400/60 transition-all duration-300 group flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="px-3 py-1 rounded-full bg-cyan-950 border border-cyan-800 text-cyan-300 font-mono text-xs" data-i18n="proj1Category">Hardware & Embedded Project</span>
+                                <i data-lucide="radio" class="w-6 h-6 text-cyan-400 animate-pulse"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-100 group-hover:text-blue-400 transition-colors" data-i18n="proj1Title">
+                                ESP32 RF Communication & Power Managed Device
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed" data-i18n="proj1Desc">
+                                Complete hardware-software integrated custom system featuring ESP32 microcontroller, RF module communication, OLED display interface, custom PCB design engineered in Altium, integrated battery management, and custom charging circuit.
+                            </p>
+                            <div class="grid grid-cols-2 gap-3 pt-2 font-mono text-xs text-slate-400">
+                                <div class="bg-black/30 p-2.5 rounded-lg border border-blue-900/30">⚡ ESP32 Core</div>
+                                <div class="bg-black/30 p-2.5 rounded-lg border border-blue-900/30">📡 RF Transceiver</div>
+                                <div class="bg-black/30 p-2.5 rounded-lg border border-blue-900/30">🛠️ Custom PCB (Altium)</div>
+                                <div class="bg-black/30 p-2.5 rounded-lg border border-blue-900/30">🔋 Battery/Charger Module</div>
+                            </div>
+                        </div>
+                        <div class="pt-6 border-t border-blue-900/40 flex items-center justify-between">
+                            <div class="flex gap-2">
+                                <span class="px-2.5 py-1 rounded-md bg-blue-900/30 text-blue-300 text-xs font-mono">Arduino IDE</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-900/30 text-blue-300 text-xs font-mono">Altium</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-900/30 text-blue-300 text-xs font-mono">ESP32</span>
+                            </div>
+                            <span class="text-xs text-cyan-400 font-mono flex items-center gap-1"><span data-i18n="projStatusShowcase">Completed Showcase</span> <i data-lucide="check-circle-2" class="w-4 h-4"></i></span>
+                        </div>
+                    </div>
+
+                    <!-- Featured Project 2: Automated Reconnaissance Suite -->
+                    <div class="glass-card-dark rounded-3xl p-8 space-y-6 hover:border-blue-400/60 transition-all duration-300 group flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="px-3 py-1 rounded-full bg-blue-950 border border-blue-800 text-blue-300 font-mono text-xs" data-i18n="proj2Category">Security Automation</span>
+                                <i data-lucide="terminal" class="w-6 h-6 text-blue-400"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-100 group-hover:text-blue-400 transition-colors" data-i18n="proj2Title">
+                                Web Reconnaissance & Vulnerability Pipeline
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed" data-i18n="proj2Desc">
+                                Automated CLI reconnaissance environment chaining Subfinder, httpx, ffuf, and Katana. Generates comprehensive attack surface maps, identifies subdomains, probes endpoints for CORS misconfigurations, and parses information disclosures.
+                            </p>
+                            <div class="grid grid-cols-2 gap-3 pt-2 font-mono text-xs text-slate-400">
+                                <div class="bg-black/30 p-2.5 rounded-lg border border-blue-900/30">🔍 Subdomain Enumeration</div>
+                                <div class="bg-black/30 p-2.5 rounded-lg border border-blue-900/30">⚡ Fuzzing with ffuf</div>
+                                <div class="bg-black/30 p-2.5 rounded-lg border border-blue-900/30">🌐 Endpoint Crawler (Katana)</div>
+                                <div class="bg-black/30 p-2.5 rounded-lg border border-blue-900/30">🛡️ Vulnerability Assessment</div>
+                            </div>
+                        </div>
+                        <div class="pt-6 border-t border-blue-900/40 flex items-center justify-between">
+                            <div class="flex gap-2">
+                                <span class="px-2.5 py-1 rounded-md bg-blue-900/30 text-blue-300 text-xs font-mono">Bash</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-900/30 text-blue-300 text-xs font-mono">Python</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-900/30 text-blue-300 text-xs font-mono">Kali Linux</span>
+                            </div>
+                            <span class="text-xs text-blue-400 font-mono flex items-center gap-1"><span data-i18n="projStatusToolkit">Active Toolkit</span> <i data-lucide="check-circle-2" class="w-4 h-4"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements & Certificates Section -->
+        <section id="achievements" class="py-24 px-4 sm:px-6 lg:px-8 bg-blue-950/10 border-y border-blue-900/20 relative">
+            <div class="max-w-7xl mx-auto space-y-16">
+                <div class="text-center max-w-3xl mx-auto space-y-4">
+                    <h2 class="text-xs font-mono font-bold tracking-widest text-blue-400 uppercase" data-i18n="achievementsTitle">Certifications & Milestones</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold tracking-tight" data-i18n="achievementsHeadline">Achievements & Certificates</p>
+                    <p class="text-slate-400 text-sm sm:text-base" data-i18n="achievementsSubheadline">Certificates, badges, and technical accomplishments (Interactive placeholder slots for upcoming uploads).</p>
+                </div>
+
+        </section>
+
+        <!-- Cyber Spotify Music Player Section (Tepat di Atas Section Contact) -->
+        <section id="music-player-section" class="py-16 px-4 sm:px-6 lg:px-8 relative bg-blue-950/10 border-y border-blue-900/30">
+            <div class="max-w-5xl mx-auto space-y-8">
+                <!-- Section Header -->
+                <div class="text-center max-w-2xl mx-auto space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 font-mono text-xs">
+                        <i data-lucide="radio" class="w-3.5 h-3.5 animate-pulse"></i>
+                        <span>SPOTIFY AUDIO DECK • NO ADS</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight" data-i18n="musicTitle">Cyber Background Music</h2>
+                    <p class="text-slate-400 text-xs sm:text-sm" data-i18n="musicDesc">Putar musik pengiring Synthwave, Lo-Fi Chill & Cyberpunk Ambient saat menjelajahi portofolio.</p>
+                </div>
+
+                <!-- Spotify Player Card Component -->
+                <div class="glass-card-dark rounded-3xl p-6 sm:p-8 border border-cyan-800/40 shadow-2xl shadow-cyan-950/40 space-y-6 relative overflow-hidden">
+                    <!-- Top Bar & Track Info -->
+                    <div class="flex items-center justify-between gap-4 border-b border-blue-900/40 pb-5">
+                        <div class="flex items-center gap-4 overflow-hidden">
+                            <!-- Large Rotating Vinyl Disc Artwork -->
+                            <div class="relative w-16 h-16 shrink-0 rounded-full border-2 border-cyan-400/60 shadow-lg shadow-cyan-500/30 overflow-hidden bg-slate-950 flex items-center justify-center">
+                                <img id="music-track-cover" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=200&auto=format&fit=crop" class="vinyl-disc w-full h-full object-cover rounded-full" id="music-vinyl" alt="Album Cover">
+                                <div class="absolute w-5 h-5 rounded-full bg-slate-950 border-2 border-cyan-400/80 z-10 flex items-center justify-center">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
+                                </div>
+                            </div>
+
+                            <!-- Track Meta Info -->
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h3 id="music-track-title" class="font-extrabold text-base sm:text-lg text-slate-100 truncate">About You</h3>
+                                    <!-- Animated Equalizer Bars -->
+                                    <div class="flex items-end gap-1 h-4 shrink-0">
+                                        <span class="eq-bar"></span>
+                                        <span class="eq-bar"></span>
+                                        <span class="eq-bar"></span>
+                                        <span class="eq-bar"></span>
+                                    </div>
+                                </div>
+                                <span id="music-track-artist" class="text-xs font-mono text-cyan-400 block mt-0.5">The 1975</span>
+                            </div>
+                        </div>
+
+                        <div class="text-right font-mono text-xs text-slate-400 hidden sm:block shrink-0">
+                            <span class="text-emerald-400 font-bold block">● HQ AUDIO ENGINE</span>
+                            <span>Direct MP3 Stream</span>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar & Time Tracker -->
+                    <div class="space-y-2">
+                        <div id="music-progress-container" class="w-full h-2 bg-slate-900/90 rounded-full overflow-hidden cursor-pointer hover:h-2.5 transition-all group relative border border-blue-900/40">
+                            <div id="music-progress-bar" class="h-full bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400 rounded-full w-0 group-hover:brightness-125 transition-all"></div>
+                        </div>
+                        <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                            <span id="music-time-current">0:00</span>
+                            <span class="text-[10px] text-cyan-400/80 font-bold uppercase tracking-wider">High Fidelity Direct Audio</span>
+                            <span id="music-time-duration">0:00</span>
+                        </div>
+                    </div>
+
+                    <!-- Main Playback Control Bar -->
+                    <div class="flex items-center justify-between gap-4 pt-2">
+                        <div class="flex items-center gap-2">
+                            <button id="music-btn-volume" class="p-2.5 rounded-xl bg-slate-900/80 border border-blue-900/40 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 transition-all" title="Mute/Unmute">
+                                <i data-lucide="volume-2" class="w-4 h-4"></i>
+                            </button>
+                            <span class="text-xs font-mono text-slate-400 hidden sm:inline">Volume Deck</span>
+                        </div>
+
+                        <!-- Center Playback Controls -->
+                        <div class="flex items-center gap-5">
+                            <button id="music-btn-prev" class="p-3 rounded-2xl bg-slate-900/80 border border-blue-900/40 text-slate-200 hover:text-cyan-400 hover:border-cyan-500/50 transition-all active:scale-95 shadow-md" title="Previous Track">
+                                <i data-lucide="skip-back" class="w-5 h-5"></i>
+                            </button>
+                            <button id="music-btn-play" class="w-14 h-14 rounded-full bg-gradient-to-tr from-blue-600 via-cyan-400 to-emerald-400 hover:scale-105 text-slate-950 flex items-center justify-center shadow-xl shadow-cyan-500/40 transition-all active:scale-95" title="Play / Pause">
+                                <i data-lucide="play" id="music-play-icon" class="w-6 h-6 fill-current ml-0.5"></i>
+                                <i data-lucide="pause" id="music-pause-icon" class="w-6 h-6 fill-current hidden"></i>
+                            </button>
+                            <button id="music-btn-next" class="p-3 rounded-2xl bg-slate-900/80 border border-blue-900/40 text-slate-200 hover:text-cyan-400 hover:border-cyan-500/50 transition-all active:scale-95 shadow-md" title="Next Track">
+                                <i data-lucide="skip-forward" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+
+                        <div class="text-right font-mono text-xs text-slate-400 hidden sm:block">
+                            <span class="text-emerald-400 font-bold block">● ONLINE</span>
+                            <span>Direct Player</span>
+                        </div>
+                    </div>
+
+                    <!-- Track Selector Quick Tabs -->
+                    <div class="pt-4 border-t border-blue-900/40 flex flex-wrap items-center justify-center gap-3">
+                        <button class="track-select-btn px-4 py-2.5 rounded-xl bg-cyan-950/80 border border-cyan-500/40 text-slate-200 font-mono text-xs hover:border-cyan-400 transition-all flex items-center gap-2 shadow-sm" data-track-index="0">
+                            <i data-lucide="music" class="w-4 h-4 text-cyan-400"></i>
+                            <span>The 1975 - About You</span>
+                        </button>
+                        <button class="track-select-btn px-4 py-2.5 rounded-xl bg-slate-900/80 border border-blue-900/40 text-slate-400 font-mono text-xs hover:border-cyan-400 hover:text-slate-200 transition-all flex items-center gap-2 shadow-sm" data-track-index="1">
+                            <i data-lucide="disc" class="w-4 h-4 text-cyan-400"></i>
+                            <span>Chase Atlantic - Consume</span>
+                        </button>
+                        <button class="track-select-btn px-4 py-2.5 rounded-xl bg-slate-900/80 border border-blue-900/40 text-slate-400 font-mono text-xs hover:border-cyan-400 hover:text-slate-200 transition-all flex items-center gap-2 shadow-sm" data-track-index="2">
+                            <i data-lucide="heart-pulse" class="w-4 h-4 text-cyan-400"></i>
+                            <span>Indila - Love Story</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-7xl mx-auto space-y-16">
+                <div class="text-center max-w-3xl mx-auto space-y-4">
+                    <h2 class="text-xs font-mono font-bold tracking-widest text-blue-400 uppercase" data-i18n="contactTitle">Get In Touch</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold tracking-tight" data-i18n="contactHeadline">Let's Connect & Collaborate</p>
+                    <p class="text-slate-400 text-sm sm:text-base" data-i18n="contactSubheadline">Feel free to reach out for security vulnerability reports, embedded systems discussions, or market analysis inquiries.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    <!-- Left Contact Info & Socials -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="glass-card-dark rounded-3xl p-8 space-y-6">
+                            <h3 class="text-xl font-bold text-slate-100">Contact Information</h3>
+                            
+                            <!-- Direct Email Card -->
+                            <div class="flex items-center gap-4 p-4 rounded-2xl bg-blue-950/40 border border-blue-800/40 hover:border-blue-500/50 transition-all">
+                                <div class="p-3 rounded-xl bg-blue-600/20 text-blue-400">
+                                    <i data-lucide="mail" class="w-6 h-6"></i>
+                                </div>
+                                <div class="overflow-hidden">
+                                    <span class="text-xs font-mono text-slate-400 block">Direct Email</span>
+                                    <a href="mailto:Carissa Zahra Wardhani" class="text-slate-100 font-medium hover:text-blue-400 transition-colors text-sm sm:text-base truncate block">
+                                        carissazahrawardhani@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Social Links List -->
+                            <div class="space-y-3 pt-2">
+                                <span class="text-xs font-mono tracking-wider text-cyan-400 font-semibold block uppercase">Social Profiles & Networks:</span>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <a href="https://github.com/XyuuAnalyst" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/80 border border-blue-900/40 hover:border-cyan-400/80 text-slate-200 hover:text-cyan-300 text-xs font-semibold tracking-wide transition-all duration-300 hover:-translate-y-1.5 hover:scale-105 hover:shadow-[0_8px_20px_rgba(56,189,248,0.35)] shadow-sm group">
+                                        <svg class="w-4 h-4 fill-current text-blue-400 group-hover:text-cyan-300 group-hover:scale-110 transition-transform shrink-0" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                        <span>GitHub</span>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/carissa-zahra-wardhani-4b9198441" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/80 border border-blue-900/40 hover:border-cyan-400/80 text-slate-200 hover:text-cyan-300 text-xs font-semibold tracking-wide transition-all duration-300 hover:-translate-y-1.5 hover:scale-105 hover:shadow-[0_8px_20px_rgba(56,189,248,0.35)] shadow-sm group">
+                                        <svg class="w-4 h-4 fill-current text-blue-400 group-hover:text-cyan-300 group-hover:scale-110 transition-transform shrink-0" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>
+                                        <span>LinkedIn</span>
+                                    </a>
+                                    <a href="https://www.instagram.com/0xgalyxz?igsi=ZzQ0MnVvYzMyeGZ4" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/80 border border-blue-900/40 hover:border-cyan-400/80 text-slate-200 hover:text-cyan-300 text-xs font-semibold tracking-wide transition-all duration-300 hover:-translate-y-1.5 hover:scale-105 hover:shadow-[0_8px_20px_rgba(56,189,248,0.35)] shadow-sm group">
+                                        <svg class="w-4 h-4 fill-current text-blue-400 group-hover:text-cyan-300 group-hover:scale-110 transition-transform shrink-0" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                        <span>Instagram</span>
+                                    </a>
+                                    <a href="https://www.tiktok.com/@marriedwithmieayamm?_r=1&_t=ZS-9AINLlkLFmK" target="_blank" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/80 border border-blue-900/40 hover:border-cyan-400/80 text-slate-200 hover:text-cyan-300 text-xs font-semibold tracking-wide transition-all duration-300 hover:-translate-y-1.5 hover:scale-105 hover:shadow-[0_8px_20px_rgba(56,189,248,0.35)] shadow-sm group">
+                                        <svg class="w-4 h-4 fill-current text-blue-400 group-hover:text-cyan-300 group-hover:scale-110 transition-transform shrink-0" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.83.57-1.33 1.54-1.34 2.55-.01.8.31 1.59.88 2.15.65.65 1.6.98 2.51.86.99-.11 1.88-.74 2.33-1.63.3-.59.44-1.26.44-1.93.02-4.57.01-9.15.01-13.72z"/></svg>
+                                        <span>TikTok</span>
+                                    </a>
+                                    <a href="https://t.me/Xyuuanalyst" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/80 border border-blue-900/40 hover:border-cyan-400/80 text-slate-200 hover:text-cyan-300 text-xs font-semibold tracking-wide transition-all duration-300 hover:-translate-y-1.5 hover:scale-105 hover:shadow-[0_8px_20px_rgba(56,189,248,0.35)] shadow-sm group">
+                                        <svg class="w-4 h-4 fill-current text-blue-400 group-hover:text-cyan-300 group-hover:scale-110 transition-transform shrink-0" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.562 8.161c-.18.717-.962 4.084-1.362 5.437-.168.573-.418.765-.658.784-.522.042-.917-.35-1.423-.68-.792-.519-1.24-.84-2.008-1.346-.888-.585-.312-.907.194-1.431.132-.137 2.428-2.225 2.472-2.413.006-.024.011-.115-.043-.163-.053-.047-.132-.031-.189-.018-.081.018-1.378.876-3.89 2.571-.368.252-.701.375-.999.368-.328-.007-.959-.185-1.428-.338-.576-.188-1.033-.288-.993-.609.021-.167.252-.338.692-.513 2.72-1.185 4.536-1.968 5.449-2.348 2.593-1.079 3.131-1.267 3.483-1.273.077 0 .25.018.362.11.095.077.121.182.133.256.012.074.027.243.016.375z"/></svg>
+                                        <span>Telegram</span>
+                                    </a>
+                                    <a href="https://x.com/Xyuu78" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/80 border border-blue-900/40 hover:border-cyan-400/80 text-slate-200 hover:text-cyan-300 text-xs font-semibold tracking-wide transition-all duration-300 hover:-translate-y-1.5 hover:scale-105 hover:shadow-[0_8px_20px_rgba(56,189,248,0.35)] shadow-sm group">
+                                        <svg class="w-4 h-4 fill-current text-blue-400 group-hover:text-cyan-300 group-hover:scale-110 transition-transform shrink-0" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                        <span>X (Twitter)</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Interactive Form -->
+                    <div class="lg:col-span-7">
+                        <form id="contact-form" class="glass-card-dark rounded-3xl p-8 space-y-6 border border-blue-900/40">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-xs font-mono text-slate-300">Your Name</label>
+                                    <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-blue-900/50 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-400 transition-colors text-sm">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-xs font-mono text-slate-300">Your Email</label>
+                                    <input type="email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-blue-900/50 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-400 transition-colors text-sm">
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-xs font-mono text-slate-300">Subject</label>
+                                <input type="text" required placeholder="Security Research / Hardware Inquiry" class="w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-blue-900/50 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-400 transition-colors text-sm">
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-xs font-mono text-slate-300">Message</label>
+                                <textarea rows="5" required placeholder="Write your message here..." class="w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-blue-900/50 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-400 transition-colors text-sm resize-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-sm shadow-lg shadow-blue-600/30 transition-all hover:scale-[1.01] flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                <span>Send Message</span>
+                            </button>
+                            <p id="form-status" class="text-xs font-mono text-center text-emerald-400 hidden">✓ Message sent successfully! I will reply to your email shortly.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-blue-900/30 py-8 px-4 sm:px-6 lg:px-8 bg-gray-950 text-slate-400 font-mono text-xs relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                © 2026 <span class="text-blue-400 font-bold">Carissa Zahra Wardhani</span>. <span data-i18n="footerRights">All Rights Reserved.</span>
+            </div>
+            <div class="flex items-center gap-6 text-slate-400">
+                <span data-i18n="footerTag1">Cybersecurity</span> • <span data-i18n="footerTag2">Embedded</span> • <span data-i18n="footerTag3">Financial</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Terminal Modal -->
+    <div id="interactive-terminal-modal" class="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="w-full max-w-4xl bg-slate-950/95 border border-cyan-500/40 rounded-2xl shadow-2xl shadow-cyan-500/20 overflow-hidden flex flex-col h-[85vh] max-h-[700px]">
+            <!-- Terminal Header Bar -->
+            <div class="flex items-center justify-between px-4 py-3 bg-slate-900/90 border-b border-cyan-900/50 shrink-0">
+                <div class="flex items-center gap-2">
+                    <button id="modal-term-red" class="w-3.5 h-3.5 rounded-full bg-red-500 hover:bg-red-400 transition-colors flex items-center justify-center text-[8px] text-red-950 font-bold group cursor-pointer" title="Close Terminal">
+                        <span class="opacity-0 group-hover:opacity-100">✕</span>
+                    </button>
+                    <button id="modal-term-yellow" class="w-3.5 h-3.5 rounded-full bg-yellow-500 hover:bg-yellow-400 transition-colors flex items-center justify-center text-[9px] text-yellow-950 font-bold group cursor-pointer" title="Minimize">
+                        <span class="opacity-0 group-hover:opacity-100">−</span>
+                    </button>
+                    <button id="modal-term-green" class="w-3.5 h-3.5 rounded-full bg-green-500 hover:bg-green-400 transition-colors flex items-center justify-center text-[8px] text-green-950 font-bold group cursor-pointer" title="Maximize">
+                        <span class="opacity-0 group-hover:opacity-100">⤢</span>
+                    </button>
+                </div>
+                <div class="font-mono text-xs text-cyan-400 font-semibold truncate flex items-center gap-2">
+                    <span>Ica@security-core:~$ (TERMINAL)</span>
+                </div>
+                <button id="modal-term-close-btn" class="text-slate-400 hover:text-white transition-colors text-xs font-mono px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700">
+                    ESC to Exit
+                </button>
+            </div>
+
+            <!-- Terminal Output Body -->
+            <div id="modal-terminal-output" class="flex-1 p-4 sm:p-6 overflow-y-auto font-mono text-xs sm:text-sm text-slate-200 space-y-4 scroll-smooth">
+                <!-- Output dynamically inserted -->
+            </div>
+
+            <!-- Terminal Command Prompt Input -->
+            <form id="modal-terminal-form" class="flex items-center gap-2 px-4 py-3 bg-slate-900/90 border-t border-cyan-900/40 shrink-0 font-mono text-xs sm:text-sm">
+                <span class="text-emerald-400 font-bold shrink-0">Ica@security-core:~$</span>
+                <input type="text" id="modal-terminal-input" class="flex-1 bg-transparent border-none outline-none text-cyan-300 placeholder-slate-600 font-mono text-xs sm:text-sm focus:ring-0" placeholder="Type /help to see commands..." autocomplete="off" spellcheck="false">
+                <span class="w-2 h-4 bg-cyan-400 animate-pulse shrink-0"></span>
+            </form>
+        </div>
+    </div>
+
+    <!-- External Modular Scripts -->
+    <script src="js/translations.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/3d-canvas.js"></script>
+    <script src="js/terminal.js"></script>
+    <script src="js/music-player.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

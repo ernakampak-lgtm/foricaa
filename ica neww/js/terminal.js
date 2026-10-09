@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <!-- Link ke GitHub dari foto 3x4 -->
                     <a href="https://github.com/XyuuAnalyst" target="_blank" rel="noopener noreferrer" class="absolute inset-0 z-10 opacity-0 group-hover/photo:opacity-100 transition-opacity duration-300" title="View GitHub Profile"></a>
                     <!-- Foto Profil -->
-                    <img id="user-profile-img" src="profil/WhatsApp Image 2026-08-25 at 15.29.40.jpeg" alt="Foto 3x4 Muhammad Dava" class="w-full h-full object-cover" />
+                    <img id="user-profile-img" src="profil/unduhan.webp" alt="Foto 3x4 Muhammad Dava" class="w-full h-full object-cover" />
                     <!-- Overlay hint untuk GitHub -->
                     <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover/photo:opacity-100 transition-opacity duration-300 pointer-events-none">
                         <div class="bg-cyan-600/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-2 transform scale-90 group-hover/photo:scale-100 transition-transform">
